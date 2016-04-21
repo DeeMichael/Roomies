@@ -1,0 +1,26 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/DeeMichael/Roomies",
+  "authors": [
+    "DeeMichael <deemichaelb@gmail.com>"
+  ],
+  "description": "demo project for the MEAN stack - an app for finding roommates",
+  "main": "index.html",
+  "keywords": [
+    "roommate",
+    "find",
+    "full-stack"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-ui-router": "^0.2.18"
+  }
+}
