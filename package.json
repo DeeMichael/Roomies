@@ -1,0 +1,33 @@
+{
+  "name": "roomies",
+  "version": "1.0.0",
+  "description": "Website where people can search for roommates.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeeMichael/Roomies.git"
+  },
+  "keywords": [
+    "roommate",
+    "find",
+    "full-stack"
+  ],
+  "author": "deemichael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeeMichael/Roomies/issues"
+  },
+  "homepage": "https://github.com/DeeMichael/Roomies#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.12",
+    "morgan": "^1.7.0",
+    "request": "^2.72.0",
+    "underscore": "^1.8.3"
+  }
+}
