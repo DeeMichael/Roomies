@@ -11,11 +11,27 @@ var userController = {
     user.save(function(err,user){
       if(err){
         console.log("!-- user route - db error: ", err)
-        return res.json({"message": "user route: save error"})
+        return res.json({message: "user route: save error"})
       } else {
         console.log("-- user created. ")
         return res.json(user)
       }
     })
+  },
+  // ---------------------------------------------------------------------------
+  // responds: array of all users in the database |
+  // ---------------------------------------------------------------------------
+  getAll: function(req,res){
+    User.find({}, function(err, users){
+      if (err) {
+        console.log("!-- user route - db error: ", err)
+        return res.json({message:"user route: find error"})
+      }else {
+        console.log("-- found all. ")
+        return res.json(users)
+      }
+    })
   }
 }
+
+module.exports = userController
