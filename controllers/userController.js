@@ -8,6 +8,7 @@ var userController = {
   // ---------------------------------------------------------------------------
   create: function(req,res){
     var user = new User(req.body)
+    console.log("req.body is : ", req.body)
     user.save(function(err,user){
       if(err){
         console.log("!-- user route - db error: ", err)
@@ -15,6 +16,33 @@ var userController = {
       } else {
         console.log("-- user created. ")
         return res.json(user)
+      }
+    })
+  },
+  // ---------------------------------------------------------------------------
+  // responds: JSON message that the credentials were Valid|
+  // ---------------------------------------------------------------------------
+  login: function(req,res){
+    var userParams = req.body
+    console.log("req.body is : ", req.body)
+    User.findOne({username:userParams.username}, function(err,user){
+      if (err) {
+        console.log("!-- login route - db error: ", err)
+        return res.json({message: "login route: findOne error in login"})
+      }else {
+        user.passCheck(userParams.password, function (err, isMatch){
+          if(err){
+            console.log("!-- login route - db error: ", err)
+            return res.json({message: "login route: passCheck error in login"})
+          }
+          if (isMatch) {
+            console.log("-- login route - Valid Credentials. ")
+            return res.json({message: "login route: Valid Credentials. "})
+          }else {
+            console.log("-- login route - Invalid Credentials. ")
+            return res.json({message: "login route: Invalid Credentials. "})
+          }
+        })
       }
     })
   },
