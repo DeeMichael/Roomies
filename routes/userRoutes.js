@@ -7,6 +7,6 @@ userRouter.route('/user')
 userRouter.route('/user/:id')
           .get(userController.getSingle)
           .put(userController.update)
-//           .delete(userController.destroy)
+          .delete(userController.destroy)
 
 module.exports = userRouter

@@ -72,7 +72,7 @@ var userController = {
         if(req.body.image)    {user.image     = req.body.image}
         if(req.body.gender)   {user.gender    = req.body.gender}
         if(req.body.friends)  {user.friends   = req.body.friends}
-        if(req.body.address)  {user.address   = req.body.address}         
+        if(req.body.address)  {user.address   = req.body.address}
         user.save(function(err, u){
           if (err) {
             console.log("!-- user/:id route - db error: ", err)
@@ -84,6 +84,21 @@ var userController = {
         })
       }
     })
+  },
+  // ---------------------------------------------------------------------------
+  // responds: message that user has been deleted |
+  // ---------------------------------------------------------------------------
+  destroy: function(req,res){
+      var id = req.params.id
+      User.remove({_id:id}, function(err){
+        if (err) {
+          console.log("!-- user/:id route - db error: ", err)
+          return res.json({message:"user/:id route: remove error"})
+        }else {
+          console.log("-- removed user. ")
+          return res.json({message:"-- user deleted."})
+        }
+      })
   }
 }
 

@@ -12,7 +12,7 @@ var bodyParser = require('body-parser'),
 //  DB Initialization
 mongoose.connect(dbURL,function(err){
   if (err) console.log("!-- Failed to connect to roomies db.")
-  else console.log("-- Connected to roomies db.")
+  else     console.log("-- Connected to roomies db.")
 })
 
 //  Standard Middleware
