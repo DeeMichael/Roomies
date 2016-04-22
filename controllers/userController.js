@@ -11,7 +11,7 @@ var userController = {
     user.save(function(err,user){
       if(err){
         console.log("!-- user route - db error: ", err)
-        return res.json({message: "user route: save error"})
+        return res.json({message: "user route: save error in create"})
       } else {
         console.log("-- user created. ")
         return res.json(user)
@@ -25,7 +25,7 @@ var userController = {
     User.find({}, function(err, users){
       if (err) {
         console.log("!-- user route - db error: ", err)
-        return res.json({message:"user route: find error"})
+        return res.json({message:"user route: find error in getAll"})
       }else {
         console.log("-- found all. ")
         return res.json(users)
@@ -40,10 +40,48 @@ var userController = {
     User.findOne({_id: id}, function(err, user){
       if (err) {
         console.log("!-- user/:id route - db error: ", err)
-        return res.json({message:"user route: findOne error"})
+        return res.json({message:"user route: findOne error in getSingle"})
       }else {
         console.log("-- found single. ")
         return res.json(user)
+      }
+    })
+  },
+  // ---------------------------------------------------------------------------
+  // responds: one user that has been updated in the database |
+  // ---------------------------------------------------------------------------
+  update: function(req,res){
+    var id = req.params.id
+    User.findOne({_id:id}, function(err, user){
+      if (err) {
+        console.log("!-- user/:id route - db error: ", err)
+        return res.json({message:"user/:id route: findOne error"})
+      }else {
+        if(req.body.username) {user.username  = req.body.username}
+        if(req.body.password) {user.password  = req.body.password}
+        if(req.body.firstname){user.firstname = req.body.firstname}
+        if(req.body.lastname) {user.lastname  = req.body.lastname}
+        if(req.body.phone)    {user.phone     = req.body.phone}
+        if(req.body.email)    {user.email     = req.body.email}
+        if(req.body.about)    {user.about     = req.body.about}
+        if(req.body.pricemin) {user.pricemin  = req.body.pricemin}
+        if(req.body.pricemax) {user.pricemax  = req.body.pricemax}
+        if(req.body.available){user.available = req.body.available}
+        if(req.body.age)      {user.age       = req.body.age}
+        if(req.body.smokes)   {user.smokes    = req.body.smokes}
+        if(req.body.image)    {user.image     = req.body.image}
+        if(req.body.gender)   {user.gender    = req.body.gender}
+        if(req.body.friends)  {user.friends   = req.body.friends}
+        if(req.body.address)  {user.address   = req.body.address}         
+        user.save(function(err, u){
+          if (err) {
+            console.log("!-- user/:id route - db error: ", err)
+            return res.json({message:"user/:id route: save error"})
+          }else {
+            console.log("-- updated user. ")
+            return res.json(u)
+          }
+        })
       }
     })
   }
