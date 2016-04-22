@@ -6,18 +6,22 @@
           function uiRouterConfig($stateProvider, $urlRouterProvider){
             $stateProvider
             .state('home',{
-              url        : '/',
+              url        : '/home',
               templateUrl: 'assets/partials/home.html'
             })
             $stateProvider
             .state('about',{
-              url        : '/',
+              url        : '/about',
               templateUrl: 'assets/partials/about.html'
             })
             $stateProvider
             .state('contact',{
-              url        : '/',
+              url        : '/contact',
               templateUrl: 'assets/partials/contact.html'
+            })
+            .state('profile',{
+              url        : '/profile',
+              templateUrl: 'assets/partials/profile.html'
             })
             $urlRouterProvider.otherwise('/')
           }
