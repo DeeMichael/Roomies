@@ -31,6 +31,21 @@ var userController = {
         return res.json(users)
       }
     })
+  },
+  // ---------------------------------------------------------------------------
+  // responds: one user in the database |
+  // ---------------------------------------------------------------------------
+  getSingle: function(req,res){
+    var id = req.params.id
+    User.findOne({_id: id}, function(err, user){
+      if (err) {
+        console.log("!-- user/:id route - db error: ", err)
+        return res.json({message:"user route: findOne error"})
+      }else {
+        console.log("-- found single. ")
+        return res.json(user)
+      }
+    })
   }
 }
 
