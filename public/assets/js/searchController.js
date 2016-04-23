@@ -5,8 +5,8 @@
 
   function searchController(userFactory){
     var sc = this
-    sc.from = 0
-    sc.to = 100
+    sc.minAge = 16
+    sc.maxAge = 120
   }
 
 }())

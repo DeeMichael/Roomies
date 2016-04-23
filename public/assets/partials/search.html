@@ -1,54 +1,48 @@
 
-<!-- SEARCH BAR -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-      <div class="panel text-center">
-        <span>Keyword Search</span>
-        <div class="input">
-          <input ng-model="findCtrl.keyword" type="text" class="form-control text-center" placeholder="Start typing here..">
-        </div><!-- input-group -->
-      </div><!-- panel -->
-    </div><!-- col-sm-4 col-sm-offset-4 -->
-  </div><!--row -->
-</div><!-- container -->
 
 <div class="panel panel-default">
+  <h3 class="text-center">Power Search</h3>
   <div class="panel-body">
     <form class="form-inline">
-      <div class="form-group">
-        <label>Gender: </label>
-        <select  class="form-control">
-          <option value="1">Male</option>
-          <option value="2">Female</option>
-          <option value="4">Don't Care</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Smokes: </label>
-        <select  class="form-control">
-          <option value="1">Non-Smoker</option>
-          <option value="2">Smoker</option>
-          <option value="3">Don't Care</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Maximum Rent: </label>
-        <div class="input-group col-xs-6">
-          <span class="input-group-addon">$</span>
-          <input type="number" class="form-control text-center" aria-label="Amount (to the nearest dollar)">
-          <span class="input-group-addon">.00</span>
+      <div class="row">
+        <div class="form-group first-row-param">
+          <label>Gender: </label>
+          <select  class="form-control">
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+            <option value="4">Don't Care</option>
+          </select>
+        </div>
+        <div class="form-group first-row-param">
+          <label>Smokes: </label>
+          <select  class="form-control">
+            <option value="1">Non-Smoker</option>
+            <option value="2">Smoker</option>
+            <option value="3">Don't Care</option>
+          </select>
+        </div>
+        <div class="form-group first-row-param">
+          <label>Maximum Rent: </label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="number" class="form-control text-center max-rent-input" aria-label="Amount (to the nearest dollar)">
+            <span class="input-group-addon">.00</span>
+          </div>
+        </div>
+        <div class="form-group first-row-param">
+          <label>Keyword Search: </label>
+          <input type="text" class="form-control text-center" placeholder="Start typing here..">
+        </div>
+      </div><!-- row -->
+      <div class="row">
+        <label class="pull-left minagelabel">Min Age: <span ng-bind="sc.minAge"></span></label>
+        <label class="pull-right maxagelabel">Max Age: <span ng-bind="sc.maxAge"></span></label>
+        <div class="age-slider">
+          <div slider ng-from="sc.minAge" ng-to="sc.maxAge" start=16 end=120 step=1></div>
         </div>
       </div>
 
-      <!-- <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <input ng-model="findCtrl.maxPriceDOM" type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)">
-        <span class="input-group-addon">.00</span>
-      </div> -->
 
     </form>
   </div><!-- panel-body -->
 </div><!-- panel panel-default -->
-
-<div slider ng-from="sc.from" ng-to="sc.to" start=16 end=120 step=1></div>

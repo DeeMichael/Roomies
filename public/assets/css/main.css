@@ -1,10 +1,45 @@
+
+/******************************************************************************/
+/*                      Classes for Header                                    */
+/******************************************************************************/
+
+/*     class for carousel picture feature                                     */
 .carolcontainer{
   position: relative;
 }
+
+/*     class user in log in modal                                             */
 .signincontainer{
   position: absolute;
   display: inline-block;
   z-index: 1;
   right: 20px;
   top: 5px;
+}
+
+/******************************************************************************/
+/*                      Classes for search partial                            */
+/******************************************************************************/
+
+.first-row-param{
+  margin-left: 10px;
+}
+.max-rent-input{
+  max-width: 100px;
+}
+
+.age-slider{
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-top: 40px;
+}
+
+.minagelabel{
+  margin-left: 20px;
+  margin-top: 7px;
+}
+
+.maxagelabel{
+  margin-right: 20px;
+  margin-top: 7px;
 }
