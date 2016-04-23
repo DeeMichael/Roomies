@@ -1,13 +1,14 @@
 ;(function(){
   'use strict'
-  angular.module('roomieApp', ['ui.router'])
+  angular.module('roomieApp', ['ui.router', 'nouislider'])
           .config(uiRouterConfig, ['$stateProvider','$urlRouterProvider'])
 
           function uiRouterConfig($stateProvider, $urlRouterProvider){
             $stateProvider
             .state('search',{
               url        : '/search',
-              templateUrl: 'assets/partials/search.html'
+              templateUrl: 'assets/partials/search.html',
+              controller : 'searchController as sc'
             })
             $stateProvider
             .state('about',{
