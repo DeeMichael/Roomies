@@ -27,8 +27,9 @@
       <!--*************************************************************************-->
       <div class="container carolcontainer">
           <div class="signincontainer">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logInModal">Log In</button>
+              <button ng-show="uc.showLogin" type="button" class="btn btn-info" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+              <button ng-show="uc.showLogin" type="button" class="btn btn-primary" data-toggle="modal" data-target="#logInModal">Log In</button>
+              <button ng-show="uc.showLogout" type="button" class="btn btn-primary">Log Out</button>
           </div>
           <!--*************************************************************************-->
           <!--                         Start of Signup Modal                           -->
@@ -108,7 +109,7 @@
                                       <select name="gender" ng-model="uc.newUser.gender" class="form-control col-sm-4" required>
                                           <option value="male">Male</option>
                                           <option value="female">Female</option>
-                                          <option value="trans">Trans</option>
+                                          <option value=" ">Other</option>
                                       </select>
                                       <div ng-messages="userForm.gender.$error" ng-show="userForm.gender.$touched || (userForm.gender.$touched && userForm.gender.$invalid)">
                                           <p ng-message="required">Your gender is required.</p>

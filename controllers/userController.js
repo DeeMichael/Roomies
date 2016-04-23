@@ -8,7 +8,6 @@ var userController = {
   // ---------------------------------------------------------------------------
   create: function(req,res){
     var user = new User(req.body)
-    console.log("req.body is : ", req.body)
     user.save(function(err,user){
       if(err){
         console.log("!-- user route - db error: ", err)
@@ -18,6 +17,25 @@ var userController = {
         return res.json(user)
       }
     })
+  },
+  // ---------------------------------------------------------------------------
+  // responds: array of users that according to search params | used in search partial
+  // ---------------------------------------------------------------------------
+  search: function(req,res){
+    User.find({
+              age: {$gte: req.body.minAge, $lte:req.body.maxAge},
+              pricemax: {$lte:req.body.priceMax},
+              gender: req.body.gender,
+              smokes: req.body.smokes
+            }, function(err,users){
+              if (err) {
+                console.log("!-- search route - db error: ", err)
+                return res.json({message:"search route: find error in search"})
+              } else {
+                console.log("-- search ran succesfully. ")
+                return res.json(users)
+              }
+            })
   },
   // ---------------------------------------------------------------------------
   // responds: user object |

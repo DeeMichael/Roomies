@@ -11,10 +11,9 @@
     }
     uf.login = function(nameAndPass){
       return $http.post('/user-api/v1/login',nameAndPass)
-              .then(function(res){
-                uf.user = res.data
-                return uf.user
-              })
+    }
+    uf.search = function(searchParams){
+      return $http.post('/user-api/v1/search',searchParams)
     }
 
     return uf

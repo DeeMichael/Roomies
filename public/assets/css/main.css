@@ -23,22 +23,35 @@
 
 .first-row-param{
   margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
 }
 .max-rent-input{
   max-width: 100px;
 }
-
+@media (max-width: 768px) {
+  .max-rent-input {
+    max-width:1000px;
+  }
+}
+.center-row{
+  text-align: center;
+}
+.age-slider-container{
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
 .age-slider{
   padding-right: 30px;
   padding-left: 30px;
   margin-top: 40px;
+  margin-bottom: 10px;
 }
-
 .minagelabel{
   margin-left: 20px;
   margin-top: 7px;
 }
-
 .maxagelabel{
   margin-right: 20px;
   margin-top: 7px;

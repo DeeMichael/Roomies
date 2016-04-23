@@ -5,18 +5,25 @@
 
   function userController(userFactory){
     var uc = this
+
+    uc.showLogin  = true
+    uc.showLogout = false
+
     uc.submitNewUser = function(){
-      console.log("submitting new user ", uc.newUser)
       userFactory.signup(uc.newUser)
               .then(function(res){
-              console.log("res.data is : ", res.data)
-      })
+                uc.user = res.data
+                uc.showLogin = false
+                uc.showLogout = true
+              })
     }
     uc.loginSubmit = function(){
       userFactory.login(uc.loginUser)
-        .then(function(res){
-          uc.user = res
-        })
+              .then(function(res){
+                uc.user = res.data
+                uc.showLogin = false
+                uc.showLogout = true
+              })
     }
   }
 

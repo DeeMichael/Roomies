@@ -9,6 +9,9 @@ userRouter.route('/user')
 userRouter.route('/login')
           .post(userController.login)
 
+userRouter.route('/search')
+          .post(userController.search)
+
 userRouter.route('/user/:id')
           .get(userController.getSingle)
           .put(userController.update)
