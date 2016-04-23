@@ -27,9 +27,9 @@
             })
             .state('profile',{
               url        : '/profile',
-              templateUrl: 'assets/partials/profile.html',
-              controller : 'profileController as pc'
+              templateUrl: 'assets/partials/profile.html'
+              // controller : 'profileController as pc'
             })
-            $urlRouterProvider.otherwise('/')
+            $urlRouterProvider.otherwise('/home')
           }
 }())

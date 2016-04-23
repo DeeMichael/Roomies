@@ -3,8 +3,11 @@
   angular.module('roomieApp')
           .controller('authController', ['Auth','AuthToken','$state','$rootScope',authController])
 
-  function authController(Auth,AuthToken,$state,$rootscope){
+  function authController(Auth,AuthToken,$state,$rootScope){
     var ac = this
+
+    ac.isLoggedIn = Auth.isLoggedIn()
+
     $rootScope.$on('$stateChangeSuccess', function(){
       console.log("=========STATE CHANGE=========")
       ac.isLoggedIn = Auth.isLoggedIn()
@@ -18,9 +21,11 @@
         $state.go('home')
       }
     })
+
     ac.loginSubmit = function(){
+      $('#logInModal').removeClass('fade')
+      $('#logInModal').modal('hide')
       console.log("doLogin:==============")
-      console.log(ac.loginUser)
         Auth.login(ac.loginUser.username,ac.loginUser.password)
           .then(function(response){
             AuthToken.setToken(response.data.token)
@@ -28,7 +33,10 @@
             $state.go('search')
           })
     }
+
     ac.doLogout = function() {
+        ac.loginUser.username = ""
+        ac.loginUser.password = ""
         Auth.logout()
         $state.go('home')
     }
