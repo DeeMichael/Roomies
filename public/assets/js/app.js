@@ -5,9 +5,9 @@
 
           function uiRouterConfig($stateProvider, $urlRouterProvider){
             $stateProvider
-            .state('home',{
-              url        : '/home',
-              templateUrl: 'assets/partials/home.html'
+            .state('search',{
+              url        : '/search',
+              templateUrl: 'assets/partials/search.html'
             })
             $stateProvider
             .state('about',{
@@ -21,7 +21,8 @@
             })
             .state('profile',{
               url        : '/profile',
-              templateUrl: 'assets/partials/profile.html'
+              templateUrl: 'assets/partials/profile.html',
+              controller : 'profileController as pc'
             })
             $urlRouterProvider.otherwise('/')
           }

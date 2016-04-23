@@ -20,11 +20,10 @@ var userController = {
     })
   },
   // ---------------------------------------------------------------------------
-  // responds: JSON message that the credentials were Valid|
+  // responds: user object |
   // ---------------------------------------------------------------------------
   login: function(req,res){
     var userParams = req.body
-    console.log("req.body is : ", req.body)
     User.findOne({username:userParams.username}, function(err,user){
       if (err) {
         console.log("!-- login route - db error: ", err)
@@ -37,7 +36,7 @@ var userController = {
           }
           if (isMatch) {
             console.log("-- login route - Valid Credentials. ")
-            return res.json({message: "login route: Valid Credentials. "})
+            return res.json(user)
           }else {
             console.log("-- login route - Invalid Credentials. ")
             return res.json({message: "login route: Invalid Credentials. "})

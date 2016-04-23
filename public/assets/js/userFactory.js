@@ -11,6 +11,10 @@
     }
     uf.login = function(nameAndPass){
       return $http.post('/user-api/v1/login',nameAndPass)
+              .then(function(res){
+                uf.user = res.data
+                return uf.user
+              })
     }
 
     return uf

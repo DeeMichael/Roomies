@@ -12,9 +12,17 @@
               console.log("res.data is : ", res.data)
       })
     }
+    uc.loginSubmit = function(){
+      userFactory.login(uc.loginUser)
+        .then(function(res){
+          uc.user = res
+        })
+    }
   }
 
 }())
+
+
 
 // uc.suUsername
 // uc.suPassword
