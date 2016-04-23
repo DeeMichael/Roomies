@@ -6,6 +6,8 @@
   function userController(userFactory){
     var uc = this
 
+
+
     uc.showLogin  = true
     uc.showLogout = false
 
@@ -30,6 +32,10 @@
 }())
 
 
+// angular.module('roomieApp')
+//         .controller('userController', ['userFactory','ngMap', userController])
+//
+// function userController(userFactory,ngMap){
 
 // uc.suUsername
 // uc.suPassword

@@ -47,15 +47,24 @@
     </form>
   </div><!-- panel-body -->
 </div><!-- panel panel-default -->
-<div ng-repeat="person in sc.searchResults" class="row">
+<div class="row">
   <div class="col-sm-4">
-    <div class="panel panel-default">
-      <div class="panel-body">
-          <p>{{person.firstname}} {{person.lastname}}</p>
+    <div ng-repeat="person in sc.searchResults" class="row">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <p>{{person.firstname}} {{person.lastname}}</p>
+        </div>
       </div>
-    </div>
+    </div><!-- ng-repeat -->
+  </div><!-- col-sm-4 -->
+  <div class="col-sm-8">
+    <ng-map zoom="13" center="1431 Clayton Street, Wilmington DE" style="height:500px">
+      <marker position="8 Azalea Rd, Newark, 19711"></marker>
+      <!-- <marker ng-repeat="marker in sc.searchResults" position={{marker}}></marker> -->
+    </ng-map>
   </div>
-</div>
+</div><!-- row -->
+
 
 
 

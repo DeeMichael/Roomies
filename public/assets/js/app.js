@@ -1,6 +1,6 @@
 ;(function(){
   'use strict'
-  angular.module('roomieApp', ['ui.router', 'nouislider'])
+  angular.module('roomieApp', ['ui.router','nouislider','ngMap'])
           .config(uiRouterConfig, ['$stateProvider','$urlRouterProvider'])
 
           function uiRouterConfig($stateProvider, $urlRouterProvider){
