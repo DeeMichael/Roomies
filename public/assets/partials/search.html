@@ -60,7 +60,7 @@
   <div class="col-sm-8">
     <ng-map zoom="13" center="1431 Clayton Street, Wilmington DE" style="height:500px">
       <marker position="8 Azalea Rd, Newark, 19711"></marker>
-      <!-- <marker ng-repeat="marker in sc.searchResults" position={{marker}}></marker> -->
+      <marker ng-repeat="marker in sc.markers" position={{marker}}></marker>
     </ng-map>
   </div>
 </div><!-- row -->

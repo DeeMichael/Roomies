@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 userSchema = new Schema({
   username  : {type:String, required:true, unique:true},
   password  : {type:String, required:true},
+  rentee    : {type:Boolean, default:false},
   firstname : {type:String, required:true},
   lastname  : {type:String, required:true},
   phone     : {type:String, required:true},
@@ -15,6 +16,10 @@ userSchema = new Schema({
                 city   : {type:String},
                 zip    : {type:String}
               },
+  location : {
+              type: {type:String, default:'Point'},
+              coordinates : [{type:Number}]
+            },
   pricemin  : {type:Number},
   pricemax  : {type:Number},
   available : {type:String},
@@ -25,6 +30,8 @@ userSchema = new Schema({
   friends   : [{type: Schema.Types.ObjectId, ref: 'user'}]
 })
 
+userSchema.index({location:'2dsphere'})
+
 userSchema.pre('save', function(next){
   var user = this
   if (!user.isModified('password')) return next()
@@ -33,9 +40,7 @@ userSchema.pre('save', function(next){
 })
 
 userSchema.methods.passCheck = function(password, callback){
-  bcrypt.compare(password,this.password, function(err,isMatch){
-    callback(null,isMatch)
-  })
+  return bcrypt.compareSync(password,this.password)
 }
 
 module.exports = mongoose.model('user', userSchema)

@@ -1,14 +1,19 @@
 ;(function(){
   'use strict'
-  angular.module('roomieApp', ['ui.router','nouislider','ngMap'])
-          .config(uiRouterConfig, ['$stateProvider','$urlRouterProvider'])
+  angular.module('roomieApp', ['ui.router','nouislider','ngMap','authService'])
+          .config(uiRouterConfig, ['$stateProvider','$urlRouterProvider','$httpProvider'])
 
-          function uiRouterConfig($stateProvider, $urlRouterProvider){
+          function uiRouterConfig($stateProvider, $urlRouterProvider,  $httpProvider){
+            $httpProvider.interceptors.push('AuthInterceptor')
             $stateProvider
             .state('search',{
               url        : '/search',
               templateUrl: 'assets/partials/search.html',
               controller : 'searchController as sc'
+            })
+            .state('home',{
+              url        : '/home',
+              templateUrl: 'assets/partials/home.html',
             })
             $stateProvider
             .state('about',{

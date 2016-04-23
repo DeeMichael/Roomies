@@ -10,16 +10,17 @@
     sc.searchParams.minAge = 16
     sc.searchParams.maxAge = 120
 
-    sc.markers = [
-      "1431 Clayton Street, Wilmington DE",
-      "214 Potomac Rd, Wilmington DE",
-      "46 Garvey Ln, Newark DE"
-    ]
+    sc.markers = []
 
     sc.search = function(){
       userFactory.search(sc.searchParams)
                 .then(function(res){
                   sc.searchResults = res.data
+                  sc.markers = []
+                  for (var i = 0; i < sc.searchResults.length; i++) {
+                    var address = sc.searchResults[i].address.street + ", " + sc.searchResults[i].address.city + ", " + sc.searchResults[i].address.zip
+                    sc.markers.push(address)
+                  }
                 })
     }
   }
