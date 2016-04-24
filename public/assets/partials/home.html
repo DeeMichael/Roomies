@@ -17,13 +17,20 @@
                     <div class="modal-body">
                         <form name="userForm" ng-submit="ac.submitNewUser()">
                             <div class="row" style="margin-bottom:10px">
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-4">
                                     <span class="control-label">First Name: </span>
                                     <input name="firstName" ng-model="ac.newUser.firstname" type="text" class="form-control" required>
                                 </div>
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-4">
                                     <span class="control-label">Last Name: </span>
                                     <input name="lastName" ng-model="ac.newUser.lastname" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <span class="control-label">Renter or rentee: </span>
+                                    <select name="gender" ng-model="ac.newUser.rentee" class="form-control" required>
+                                        <option value=true>Rentee</option>
+                                        <option value=false>Renter</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
@@ -78,7 +85,7 @@
                             <div class="modal-footer">
                                 <h4 ng-show="findCtrl.newUser.showError" ng-bind="findCtrl.newUser.error" class="has-error"></h4>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button data-dismiss="{{findCtrl.newUser.closeModal}}" type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
                             </div>
                         </form>
                     </div>

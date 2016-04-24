@@ -63,7 +63,7 @@
       return config
     }
     interceptorFactory.responseError = function(response){
-      console.log("Server Erro")
+      console.log("Server Error")
         $location.path('/')
         return $q.reject(response)
     }

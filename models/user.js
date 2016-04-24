@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
       bcrypt = require('bcryptjs')
-      Schema = require('mongoose').Schema
+      Schema = require('mongoose').Schema,
+      twilioClient = require('../twilioClient'),
 
 userSchema = new Schema({
   username  : {type:String, required:true, unique:true},
@@ -33,13 +34,21 @@ userSchema = new Schema({
 userSchema.index({location:'2dsphere'})
 
 userSchema.pre('save', function(next){
+
   var user = this
   if (!user.isModified('password')) return next()
   user.password = bcrypt.hashSync(user.password, 8)
   next()
 })
 
+function newPatientAlert (user) {
+ console.log('======SENDING ALERT======', user)
+ return ' Someone is interested in your room. Email:' + user.email + ' Phone: ' + user.phone + ' Verify them here:'
+}
+
 userSchema.methods.passCheck = function(password, callback){
+  var messageToSend = newPatientAlert(this)
+  twilioClient.sendSms('+13028249081', messageToSend)
   return bcrypt.compareSync(password,this.password)
 }
 

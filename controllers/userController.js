@@ -22,12 +22,15 @@ var userController = {
             }
         })
     },
+    // ---------------------------------------------------------------------------
+    //
+    // ---------------------------------------------------------------------------
     me: function(req,res){
       console.log("passed decoded info",req.decoded)
       res.json(req.decoded)
     },
     // ---------------------------------------------------------------------------
-    // r
+    //
     // ---------------------------------------------------------------------------
     authenticate: function(req, res, next) {
       console.log("Authentication Middleware Running.")
@@ -140,18 +143,18 @@ var userController = {
     // responds: one user in the database |
     // ---------------------------------------------------------------------------
     getSingle: function(req, res) {
-        var id = req.params.id
+        var username = req.params.username
         User.findOne({
-            _id: id
+            username: username
         }, function(err, user) {
             if (err) {
                 console.log("!-- user/:id route - db error: ", err)
-                return res.json({
+                 res.json({
                     message: "user route: findOne error in getSingle"
                 })
             } else {
                 console.log("-- found single. ")
-                return res.json(user)
+                 res.json(user)
             }
         })
     },

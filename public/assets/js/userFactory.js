@@ -9,12 +9,13 @@
     uf.signup = function(user){
       return $http.post('/user-api/v1/user',user)
     }
-    uf.login = function(nameAndPass){
-      return $http.post('/user-api/v1/login',nameAndPass)
-    }
     uf.search = function(searchParams){
       return $http.post('/user-api/v1/search',searchParams)
     }
+    uf.getOne = function(username){
+      return $http.get('/user-api/v1/user/' + username)
+    }
+
 
     return uf
   }

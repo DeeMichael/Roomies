@@ -3,7 +3,6 @@ userController = require(__dirname + '/../controllers/userController.js')
 
 
 userRouter.route('/user')
-          .get(userController.getAll)
           .post(userController.create)
 
 userRouter.route('/login')
@@ -11,10 +10,13 @@ userRouter.route('/login')
 
 userRouter.use(userController.authenticate)
 
+userRouter.route('/user')
+          .get(userController.getAll)
+
 userRouter.route('/search')
           .post(userController.search)
 
-userRouter.route('/user/:id')
+userRouter.route('/user/:username')
           .get(userController.getSingle)
           .put(userController.update)
           .delete(userController.destroy)
