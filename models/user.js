@@ -26,7 +26,7 @@ userSchema = new Schema({
   available : {type:String},
   age       : {type:Number},
   smokes    : {type:String},
-  image     : {},
+  image     : {type:String},
   gender    : {type:String},
   friends   : [{type: Schema.Types.ObjectId, ref: 'user'}]
 })
@@ -34,7 +34,6 @@ userSchema = new Schema({
 userSchema.index({location:'2dsphere'})
 
 userSchema.pre('save', function(next){
-
   var user = this
   if (!user.isModified('password')) return next()
   user.password = bcrypt.hashSync(user.password, 8)
@@ -47,8 +46,8 @@ function newPatientAlert (user) {
 }
 
 userSchema.methods.passCheck = function(password, callback){
-  var messageToSend = newPatientAlert(this)
-  twilioClient.sendSms('+13028249081', messageToSend)
+  // var messageToSend = newPatientAlert(this)
+  // twilioClient.sendSms('+13028249081', messageToSend)
   return bcrypt.compareSync(password,this.password)
 }
 

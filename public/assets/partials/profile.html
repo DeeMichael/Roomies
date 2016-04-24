@@ -1,24 +1,33 @@
 <div class="text-center" style="margin-top:10px">
-    <h4>H4 header {{uc.user.firstname}} {{uc.user.lastname}}</h4>
+    <h3>{{uc.user.firstname}} {{uc.user.lastname}}</h3>
     <div class="row">
         <div class="col-sm-6">
-            <img ng-src="http://d.ibtimes.co.uk/en/full/1356835/number-2-u-s-president-barack-obama-second-most-admired-person-planet.jpg?w=500" class="img-thumbnail" />
+            <img ng-src="{{uc.user.image}}" class="img-thumbnail" />
         </div>
         <div class="col-sm-6 text-left">
-          <p>username: {{uc.user.username}}</p>
-          <p>About: {{uc.user.about}}</p>
-          <p>Age: {{uc.user.age}}</p>
-          <p>Gender: {{uc.user.gender}}</p>
-          <p>Maximum Rent: ${{uc.user.priceMax}}</p>
-          <p>Minimum Rent: ${{uc.user.priceMax}}</p>
-          <p>Smokes: {{uc.user.smokes}}</p>
-          <p>Smokes: {{uc.user.smokes}}</p>
+          <h4>Contact Info</h4>
+          <hr>
+          <p>User Name: {{uc.user.username}}</p>
           <p>Phone: {{uc.user.phone}}</p>
           <p>Email: {{uc.user.email}}</p>
-          <p>Street: {{uc.user.address.street}}</p>
-          <p>City: {{uc.user.address.city}}</p>
-          <p>Zip: {{uc.user.address.zip}}</p>
+          <hr>
+          <h4>About</h4>
+          <hr>
+          <p>Age: {{uc.user.age}}</p>
+          <p>Gender: {{uc.user.gender}}</p>
+          <p>Smokes: {{uc.user.smokes}}</p>
+          <p>About: {{uc.user.about}}</p>
+          <hr>
+          <p>Maximum Rent: ${{uc.user.pricemax}}</p>
           <p>Available: {{uc.user.available}}</p>
         </div>
     </div>
 </div>
+
+
+
+
+<!-- <p>Minimum Rent: ${{uc.user.priceMax}}</p>
+<p>Street: {{uc.user.address.street}}</p>
+<p>City: {{uc.user.address.city}}</p>
+<p>Zip: {{uc.user.address.zip}}</p> -->
