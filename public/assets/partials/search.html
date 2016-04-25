@@ -40,29 +40,56 @@
           <div class="age-slider">
             <div slider ng-from="sc.searchParams.minAge" ng-to="sc.searchParams.maxAge" start=16 end=120 step=1></div>
           </div>
+          <label ng-show="sc.user.rentee">Search Near: </label>
+          <input ng-show="sc.user.rentee" type="text" class="form-control text-center" placeholder="Wilmington DE">
+          <label>Search Radius: </label>
+          <select class="form-control">
+            <option value="">5</option>
+            <option value="">10</option>
+            <option value="">30</option>
+            <option value="">50</option>
+          </select>
           <button type="submit" class="btn btn-primary btn-lg">Search</button>
       </div>
-
-
     </form>
   </div><!-- panel-body -->
 </div><!-- panel panel-default -->
 <div class="row">
-  <div class="col-sm-4">
+  <div ng-hide="sc.user.rentee" class="col-sm-12">
     <div ng-repeat="person in sc.searchResults" class="row">
       <div class="panel panel-default">
         <div class="panel-body">
-            <p>{{person.firstname}} {{person.lastname}}</p>
+          <div class="row">
+            <div class="col-sm-3">
+              <img ng-src="{{person.image}}" class="img-thumbnail"/>
+            </div>
+            <div class="col-sm-9">
+              <h4>{{person.firstname}} {{person.lastname}}</h4>
+              <p>Age: {{person.age}}</p>
+              <p>Gender: {{person.gender}}</p>
+              <p>Smokes: {{person.smokes}}</p>
+              <p>{{person.about}}</p>
+              <button ng-click="sc.sendMessage()" type="button" class="btn btn-primary btn-md">Contact</button>
+            </div>
+          </div>
         </div>
       </div>
     </div><!-- ng-repeat -->
-  </div><!-- col-sm-4 -->
-  <div class="col-sm-8">
-    <ng-map zoom="13" center="1431 Clayton Street, Wilmington DE" style="height:500px">
-      <marker position="8 Azalea Rd, Newark, 19711"></marker>
-      <marker ng-repeat="marker in sc.markers" position={{marker}}></marker>
+  </div><!-- col-sm-12 -->
+  <div ng-show="sc.user.rentee" class="col-sm-12">
+    <ng-map zoom="13" center="1431 Clayton Street, Wilmington DE" style="height:600px">
+      <marker ng-repeat="person in sc.searchResults" position={{person.markerPosition}} on-click="sc.showCustomMarker(person.username)"></marker>
+      <custom-marker ng-repeat="person in sc.searchResults" id="{{person.username}}" position={{person.markerPosition}} on-click="sc.closeCustomMarker(person.username)">
+        <div class="panel panel-default" style="width:300px">
+          <div class="panel-body">
+            <h5>{{person.firstname}} {{person.lastname}}</h5>
+            <p>{{person.about}}</p>
+            <button ng-click="sc.sendMessage()" type="button" class="btn btn-primary btn-md">Contact</button>
+          </div>
+        </div>
+      </custom-marker>
     </ng-map>
-  </div>
+  </div><!-- col-sm-12 -->
 </div><!-- row -->
 
 

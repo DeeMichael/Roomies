@@ -4,7 +4,7 @@
         <div class="col-sm-6">
             <img ng-src="{{uc.user.image}}" class="img-thumbnail" />
         </div>
-        <div class="col-sm-6 text-left">
+        <div ng-show="uc.showProfile" class="col-sm-6 text-left">
           <h4>Contact Info</h4>
           <hr>
           <p>User Name: {{uc.user.username}}</p>
@@ -21,6 +21,49 @@
           <p>Maximum Rent: ${{uc.user.pricemax}}</p>
           <p>Available: {{uc.user.available}}</p>
         </div>
+        <div ng-hide="uc.showProfile" class="col-sm-6 text-left">
+          <form ng-submit="uc.updateProfile()">
+          <!-- <form> -->
+            <h4>Contact Info</h4>
+            <hr>
+            <p>User Name: <input ng-model="uc.updateUser.username" type="text"></p>
+            <p>Phone: <input ng-model="uc.updateUser.phone" type="text"></p>
+            <p>Email: <input ng-model="uc.updateUser.email" type="text"></p>
+            <hr>
+            <h4>About</h4>
+            <hr>
+            <p>Age: <input ng-model="uc.updateUser.age" type="number"></p>
+            <p>Gender:
+              <select ng-model="uc.updateUser.gender">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value=" ">Other</option>
+              </select>
+            </p>
+            <p>Smokes:
+              <select ng-model="uc.updateUser.smokes">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+              </select>
+            </p>
+            <p>About:
+              <textarea ng-model="uc.updateUser.about" rows="3"></textarea>
+            </p>
+            <hr>
+            <p>Maximum Rent: $<input ng-model="uc.updateUser.pricemax" type="number"> </p>
+            <p>Available: <input ng-model="uc.updateUser.available" type="text"></p>
+            <hr>
+            <h4>Address</h4>
+            <hr>
+            <p>Street: <input ng-model="uc.updateUser.address.street" type="text"></p>
+            <p>City: <input ng-model="uc.updateUser.address.city" type="text"></p>
+            <p>Zip: <input ng-model="uc.updateUser.address.zip" type="text"></p>
+            <hr>
+            <button ng-click="uc.cancelUpdateProfile()" type="button" class="btn btn-primary btn-lg">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+          </form>
+        </div>
+        <button ng-show="uc.showProfile" ng-click="uc.editProfile()" class="btn btn-primary btn-lg">Edit Profile</button>
     </div>
 </div>
 
